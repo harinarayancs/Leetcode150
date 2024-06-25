@@ -1,16 +1,19 @@
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
-         if (prices.empty()) return 0;
-    
+        if (prices.empty()) return 0;
+
     int min_price = prices[0];
     int max_profit = 0;
-    
-    for (const int& price : prices) {
-        min_price = std::min(min_price, price);       // Update the minimum price
-        max_profit = std::max(max_profit, price - min_price); // Calculate the profit
+
+    for (int i = 1; i < prices.size(); ++i) {
+        if (prices[i] < min_price) {
+            min_price = prices[i]; // Update the minimum price
+        } else if (prices[i] - min_price > max_profit) {
+            max_profit = prices[i] - min_price; // Update the maximum profit
+        }
     }
-    
+
     return max_profit;
     }
 };
