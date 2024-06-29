@@ -1,18 +1,14 @@
+
 class Solution {
 public:
-    bool containsDuplicate(vector<int>& nums) {
-        unordered_set<int> seenElements;
-        
-        for (int num : nums) { // Iterate through each element in the nums vector
-            if (seenElements.find(num) != seenElements.end()) {
-                // If the current element is already in the set, return true
+    bool containsDuplicate(const std::vector<int>& nums) {
+        std::unordered_set<int> seen;
+        for (int num : nums) {
+            if (seen.find(num) != seen.end()) {
                 return true;
             }
-            // Add the current element to the set
-            seenElements.insert(num);
+            seen.insert(num);
         }
-        
-        // If no duplicates are found, return false
-        return false;
-    }
+        return false;
+    }
 };
